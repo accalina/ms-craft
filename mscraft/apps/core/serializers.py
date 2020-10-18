@@ -5,7 +5,8 @@ from .models import (
     Market,
     Equipment,
     Member,
-    Enemy
+    Enemy,
+    Player
 )
 
 class MarketSerializer(serializers.ModelSerializer):
@@ -39,6 +40,7 @@ class MemberSerializer(serializers.ModelSerializer):
         model = Member
         fields = [
             'id',
+            'player',
             'name',
             'unit',
             'equip',
@@ -56,4 +58,14 @@ class EnemySerializer(serializers.ModelSerializer):
             'atkmin',
             'atkmax',
             'sprite',
+        ]
+
+class PlayerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Player
+        fields = [
+            'id',
+            'user',
+            'cash',
+            'joindate',
         ]

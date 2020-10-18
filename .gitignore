@@ -127,4 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+<<<<<<< HEAD
+=======
+
+>>>>>>> Added Engine: Battlelog, Buy & Sell unit, player and falled heroes info
 inject.py

@@ -10,7 +10,11 @@ from apps.core.views import (
     EquipmentAPIView,
     MemberAPIView,
     EnemyAPIView,
-    Test
+    PlayerAPIView,
+    GenerateBattle,
+    BuyMember,
+    SellMember,
+    FallenHero,
 )
 
 
@@ -32,10 +36,15 @@ router.register('market', MarketAPIView)
 router.register('equipment', EquipmentAPIView)
 router.register('member', MemberAPIView)
 router.register('enemy', EnemyAPIView)
+router.register('player', PlayerAPIView)
+
 
 
 urlpatterns = [
-    path('test/<name>', Test.as_view()),
+    path('v1/generateBattle', GenerateBattle.as_view()),
+    path('v1/buymember', BuyMember.as_view()),
+    path('v1/sellmember', SellMember.as_view()),
+    path('v1/heroes/<playerid>', FallenHero.as_view()),
     path('v1/', include(router.urls)),
     path('v2/', schema_view.with_ui('swagger', cache_timeout=0)),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0)),
