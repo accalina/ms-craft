@@ -18,8 +18,12 @@ from .serializers import (
     EquipmentSerializer,
     MemberSerializer,
     EnemySerializer,
+<<<<<<< HEAD
     PlayerSerializer,
     ProfileSerializer
+=======
+    PlayerSerializer
+>>>>>>> 9474c1aa221ff7d2c6e29be11679a9c25ce0f0ca
 )
 
 
@@ -54,6 +58,7 @@ class PlayerAPIView(ModelViewSet):
     search_fields = ['id']
     filter_backends = [filters.SearchFilter]
 
+<<<<<<< HEAD
 class ProfileAPIView(ModelViewSet):
     http_method_names = ['get']
     def get_queryset(self):
@@ -73,6 +78,21 @@ class GenerateBattle(APIView):
     def get(self, request): 
         return Response({"msg": "This endpoint is used for generating RnG Battle log"})
 
+=======
+class GenerateBattle(APIView):
+    """
+        This endpoint is used for generating RnG Battle log
+        Use the POST request to generate the battlelog.
+
+        Parameters:
+            playerid    : <int>,
+            memberid    : <int>,
+            enemyid     : <int>
+    """
+    def get(self, request): 
+        return Response({"msg": "This endpoint is used for generating RnG Battle log"})
+
+>>>>>>> 9474c1aa221ff7d2c6e29be11679a9c25ce0f0ca
     def post(self, request):
         """
             Parameters:
@@ -167,7 +187,11 @@ class SellMember(APIView):
             ply.save()
             m_data.delete()
             return Response({"msg": f"Member sold back to the market", "success": True})
+<<<<<<< HEAD
         except:
+=======
+        except apps.core.models.Member.DoesNotExist:
+>>>>>>> 9474c1aa221ff7d2c6e29be11679a9c25ce0f0ca
             return Response({"msg": f"No Member with that ID", "success": False})
 
 class FallenHero(APIView):
