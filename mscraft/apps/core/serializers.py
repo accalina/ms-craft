@@ -69,7 +69,6 @@ class PlayerSerializer(serializers.ModelSerializer):
             'user',
             'cash',
             'joindate',
-<<<<<<< HEAD
         ]
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -82,6 +81,3 @@ class ProfileSerializer(serializers.ModelSerializer):
             'joindate',
         ]
         depth = 2
-=======
-        ]
->>>>>>> 9474c1aa221ff7d2c6e29be11679a9c25ce0f0ca

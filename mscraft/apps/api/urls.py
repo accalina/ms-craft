@@ -15,10 +15,7 @@ from apps.core.views import (
     MemberAPIView,
     EnemyAPIView,
     PlayerAPIView,
-<<<<<<< HEAD
     ProfileAPIView,
-=======
->>>>>>> 9474c1aa221ff7d2c6e29be11679a9c25ce0f0ca
     GenerateBattle,
     BuyMember,
     SellMember,
@@ -39,7 +36,6 @@ schema_view = get_schema_view(
 )
 
 router = DefaultRouter()
-<<<<<<< HEAD
 router.register('market', MarketAPIView,        basename="market")
 router.register('equipment', EquipmentAPIView,  basename="equipment")
 router.register('member', MemberAPIView,        basename="member")
@@ -57,22 +53,4 @@ urlpatterns = [
     path('v1/',                 include(router.urls)),
     path('v2/',                 schema_view.with_ui('swagger', cache_timeout=0)),
     path('redoc/',              schema_view.with_ui('redoc', cache_timeout=0)),
-=======
-router.register('market', MarketAPIView)
-router.register('equipment', EquipmentAPIView)
-router.register('member', MemberAPIView)
-router.register('enemy', EnemyAPIView)
-router.register('player', PlayerAPIView)
-
-
-
-urlpatterns = [
-    path('v1/generateBattle', GenerateBattle.as_view()),
-    path('v1/buymember', BuyMember.as_view()),
-    path('v1/sellmember', SellMember.as_view()),
-    path('v1/heroes/<playerid>', FallenHero.as_view()),
-    path('v1/', include(router.urls)),
-    path('v2/', schema_view.with_ui('swagger', cache_timeout=0)),
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0)),
->>>>>>> 9474c1aa221ff7d2c6e29be11679a9c25ce0f0ca
 ]
