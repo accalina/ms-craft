@@ -7,7 +7,6 @@ import {
 } from 'react-router-dom'
 
 import "./Routes.css"
-import Header from '../components/Header'
 
 import App from './app/App';
 import Login from './login/Login';
@@ -21,7 +20,7 @@ import Fallenhero from './fallenhero/Fallenhero';
 export default function Routes(){
   return (
     <Router>
-        <Header/>
+        {/* <Header/> */}
         <Switch>
           <Route path="/" component={Login} exact></Route>
           <Route path="/login" component={Login}></Route>

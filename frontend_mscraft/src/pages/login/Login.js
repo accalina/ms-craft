@@ -4,6 +4,8 @@ import React, {
   useEffect
 } from 'react'
 import "./Login.css"
+import axios from 'axios'
+import Cookie from "js-cookie";
 
 const Login = (props) => {
   const [username, setUsername] = useState("")
@@ -11,13 +13,53 @@ const Login = (props) => {
 
   useEffect(()=>{
     document.getElementsByTagName('body')[0].className = "loginBackground"
+    if (Cookie.get('at') != null){
+      props.history.push({pathname: '/dashboard'})
+    }
   })
 
 
   const sendData = (e) => {
     e.preventDefault()
     // alert(`Username: ${username}, Password: ${password}`)
-    props.history.push({pathname: '/dashboard'})
+    // window.sessionStorage.setItem("username", "Claudia")
+
+    axios.post('http://localhost:8000/api/v1/token', {
+      username: username,
+      password: password
+    })
+    .then(function (response) {
+      Cookie.set("at", response.data.access)
+      Cookie.set("rt", response.data.refresh)
+
+      axios.defaults.xsrfHeaderName = "X-CSRFToken"
+      axios.defaults.xsrfCookieName = 'csrftoken'
+
+      axios.get('http://localhost:8000/api/v1/profile', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + Cookie.get("at")
+        }
+      })
+      .then(function (response) {
+        Cookie.set("userid", response.data[0].id)
+        Cookie.set("username", response.data[0].user.username)
+        Cookie.set("cash", response.data[0].cash)
+        props.history.push({pathname: '/dashboard'})
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    })
+    .catch(function (error) {
+      // console.log(error);
+      alert("Login Invalid, Please try again")
+      setUsername("")
+      setPassword("")
+    });
+
+    // Cookie.set("username", "Claudia")
+    
   }
 
   return (

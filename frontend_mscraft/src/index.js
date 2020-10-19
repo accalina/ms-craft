@@ -7,7 +7,6 @@ import "nes.css/css/nes.min.css";
 import './index.css';
 import Routes from './pages/Routes';
 
-
 ReactDOM.render(
   <React.StrictMode>
     <Routes />

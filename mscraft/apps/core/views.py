@@ -18,7 +18,8 @@ from .serializers import (
     EquipmentSerializer,
     MemberSerializer,
     EnemySerializer,
-    PlayerSerializer
+    PlayerSerializer,
+    ProfileSerializer
 )
 
 
@@ -36,7 +37,7 @@ class EquipmentAPIView(ModelViewSet):
     filter_backends = [filters.SearchFilter]
 
 class MemberAPIView(ModelViewSet):
-    queryset = Member.objects.all()
+    queryset = Member.objects.filter(active=True)
     serializer_class = MemberSerializer
     search_fields = ['player__id']
     filter_backends = [filters.SearchFilter]
@@ -52,6 +53,12 @@ class PlayerAPIView(ModelViewSet):
     serializer_class = PlayerSerializer
     search_fields = ['id']
     filter_backends = [filters.SearchFilter]
+
+class ProfileAPIView(ModelViewSet):
+    http_method_names = ['get']
+    def get_queryset(self):
+        return Player.objects.filter(user=self.request.user)
+    serializer_class = ProfileSerializer
 
 class GenerateBattle(APIView):
     """
@@ -160,7 +167,7 @@ class SellMember(APIView):
             ply.save()
             m_data.delete()
             return Response({"msg": f"Member sold back to the market", "success": True})
-        except apps.core.models.Member.DoesNotExist:
+        except:
             return Response({"msg": f"No Member with that ID", "success": False})
 
 class FallenHero(APIView):

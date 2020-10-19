@@ -46,6 +46,7 @@ class MemberSerializer(serializers.ModelSerializer):
             'equip',
             'active'
         ]
+        depth = 2
 
 class EnemySerializer(serializers.ModelSerializer):
     class Meta:
@@ -69,3 +70,14 @@ class PlayerSerializer(serializers.ModelSerializer):
             'cash',
             'joindate',
         ]
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Player
+        fields = [
+            'id',
+            'user',
+            'cash',
+            'joindate',
+        ]
+        depth = 2
