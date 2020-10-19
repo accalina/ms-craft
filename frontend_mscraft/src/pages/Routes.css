@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "Kongtext";
+    src: local("Kongtext"), url(../fonts/kongtext.ttf) format("truetype");
+}
+
+.retro {
+    font-family: Kongtext, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+}

@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "nes.css/css/nes.min.css";
+
 import './index.css';
-import Routes from './components/Routes';
+import Routes from './pages/Routes';
+
 
 ReactDOM.render(
   <React.StrictMode>

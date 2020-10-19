@@ -1,0 +1,11 @@
+.memberBackground {
+    background-image:url('../../images/member.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+}
+
+.dashboardBody {
+    background-color: rgb(255, 255, 255, 0.5)
+}
