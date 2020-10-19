@@ -1,0 +1,15 @@
+.loginBackground {
+    background-image:url('../../images/loginbg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+}
+
+
+form {
+    margin-top: 40px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255, 0.80)
+}
