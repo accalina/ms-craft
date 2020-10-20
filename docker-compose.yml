@@ -1,0 +1,28 @@
+version: "3.5"
+services: 
+    mscraft_frontend:
+        image: accalina/mscraft_frontend
+        container_name: mscraft_frontend
+        build:
+            context: ./frontend_mscraft
+            dockerfile: Dockerfile
+        ports: 
+            - "3001:3000"
+        networks: 
+            - comms_network
+        command: sh -c "serve -p 3000 -s ."
+
+    mscraft_backend:
+        image: accalina/mscraft_backend
+        container_name: mscraft_backend
+        build:
+            context: ./mscraft
+            dockerfile: Dockerfile
+        networks:
+            - comms_network
+        command: sh -c "cd/cloudwolf/ms-craft/mscraft && python manage.py runserver 0.0.0.0:8000"
+
+
+networks: 
+    comms_network:
+        external: true

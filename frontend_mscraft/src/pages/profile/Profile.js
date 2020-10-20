@@ -13,7 +13,7 @@ export default function Profile(props){
         // setUsername(window.sessionStorage.getItem("username"))
         if (Cookie.get('at')){
             document.getElementsByTagName('body')[0].className = "profileBackground"
-            axios.get('http://localhost:8000/api/v1/profile', {
+            axios.get('http://mscraft_backend:8000/api/v1/profile', {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + Cookie.get("at"),

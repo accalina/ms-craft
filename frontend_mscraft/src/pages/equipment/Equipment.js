@@ -17,7 +17,7 @@ export default function Equipment(props){
         axios.defaults.xsrfHeaderName = "X-CSRFToken"
         axios.defaults.xsrfCookieName = 'csrftoken'
 
-        axios.get(`http://localhost:8000/api/v1/equipment`, {
+        axios.get(`http://mscraft_backend:8000/api/v1/equipment`, {
             headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + Cookie.get("at")

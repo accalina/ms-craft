@@ -22,7 +22,7 @@ export default function Operation(props){
     const getMember = useCallback((e) => {
         axios.defaults.xsrfHeaderName = "X-CSRFToken"
         axios.defaults.xsrfCookieName = 'csrftoken'
-        axios.get(`http://localhost:8000/api/v1/member?search=${Cookie.get("userid")}`, {
+        axios.get(`http://mscraft_backend:8000/api/v1/member?search=${Cookie.get("userid")}`, {
             headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + Cookie.get("at")
@@ -44,7 +44,7 @@ export default function Operation(props){
     const getEnemy = useCallback((e) => {
         axios.defaults.xsrfHeaderName = "X-CSRFToken"
         axios.defaults.xsrfCookieName = 'csrftoken'
-        axios.get(`http://localhost:8000/api/v1/enemy`, {
+        axios.get(`http://mscraft_backend:8000/api/v1/enemy`, {
             headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + Cookie.get("at")
@@ -78,14 +78,14 @@ export default function Operation(props){
 
         const options = {
             method: 'POST',
-            url: 'http://localhost:8000/api/v1/generateBattle',
+            url: 'http://mscraft_backend:8000/api/v1/generateBattle',
             headers: requestHeader,
             data: requestData
         };
 
         const getProfile = {
             method: 'GET',
-            url: 'http://localhost:8000/api/v1/profile',
+            url: 'http://mscraft_backend:8000/api/v1/profile',
             headers: requestHeader,
         };
 
