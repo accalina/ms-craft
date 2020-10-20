@@ -20,7 +20,7 @@ services:
             dockerfile: Dockerfile
         networks:
             - comms_network
-        command: sh -c "cd/cloudwolf/ms-craft/mscraft && python manage.py runserver 0.0.0.0:8000"
+        command: sh -c "cd /cloudwolf/ms-craft/mscraft && python manage.py runserver 0.0.0.0:8000"
 
 
 networks: 
