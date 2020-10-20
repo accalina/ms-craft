@@ -28,7 +28,7 @@ export default function Dashboard(props){
             setMarketlist(response.data)
         })
         .catch(function (error) {
-            if(error.response.status == 401){
+            if(error.response.status === 401){
                 Object.keys(Cookie.get()).forEach(function(cookieName) { Cookie.remove(cookieName) });
                 props.history.push({pathname: '/login'})
             }
@@ -64,13 +64,15 @@ export default function Dashboard(props){
         };
 
         axios.request(options).then(function (response) {
+            alert(response.data.msg)
             axios.request(getProfile).then(function (response) {
                 Cookie.set("cash", response.data[0].cash)
-                props.history.push({pathname: '/dashboard'})
+                console.log(response.data)
+                // props.history.push({pathname: '/dashboard'})
             })
         })
         .catch(function (error) {
-            if(error.response.status == 401){
+            if(error.response.status === 401){
                 Object.keys(Cookie.get()).forEach(function(cookieName) { Cookie.remove(cookieName) });
                 props.history.push({pathname: '/login'})
             }

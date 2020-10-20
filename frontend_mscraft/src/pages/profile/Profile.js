@@ -1,18 +1,18 @@
 
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import Header from '../../components/Header'
-import "./Dashboard.css"
+import "./Profile.css"
 import axios from "axios";
 import Cookie from "js-cookie";
 
-export default function Dashboard(props){
+export default function Profile(props){
     const [username, setUsername] = useState("")
+    const [profiledata, setProfiledata] = useState({"user": {"email": "", "last_login": "", "date_join": ""}})
 
     useEffect(() => {
         // setUsername(window.sessionStorage.getItem("username"))
         if (Cookie.get('at')){
-            document.getElementsByTagName('body')[0].className = "dashboardBackground"
+            document.getElementsByTagName('body')[0].className = "profileBackground"
             axios.get('http://localhost:8000/api/v1/profile', {
                 headers: {
                     'Content-Type': 'application/json',
@@ -20,15 +20,17 @@ export default function Dashboard(props){
                 }
             })
             .then(function (response) {
-                Cookie.set("userid", response.data[0].id)
-                Cookie.set("username", response.data[0].user.username)
-                Cookie.set("cash", response.data[0].cash)
+                console.log(response.data[0])
+                setProfiledata(response.data[0])
                 console.clear()
             })
             .catch(function (error) {
+                if(error.response.status === 401){
+                    Object.keys(Cookie.get()).forEach(function(cookieName) { Cookie.remove(cookieName) });
+                    props.history.push({pathname: '/login'})
+                }
                 console.log(error);
             });
-            setUsername(Cookie.get('username')   )
         }else{
             props.history.push({pathname: '/login'})
         }
@@ -38,14 +40,17 @@ export default function Dashboard(props){
         <>
             <Header/>
             <div className="retro col-sm-6 offset-sm-3" >
-                <section className="dashboardBody nes-container with-title pull-left">
+                <section className="profileBody nes-container with-title pull-left">
                     <h3 className="title">Texts</h3>
-                    <h3>{username} (${Cookie.get('cash')})</h3>
+                    <h3>Username: {profiledata.user.username} </h3>
                     <hr/>
-                    <Link to="/member" className="nes-btn is-primary showcode">Members</Link> <hr/>
-                    <Link to="/market" className="nes-btn is-success showcode">Market</Link> <hr/>
-                    <Link to="/equipment" className="nes-btn is-warning showcode">Equipment</Link> <hr/>
-                    <Link to="/operation" className="nes-btn is-error showcode">Operation</Link> <hr/>
+                    <h3>Cash: ${profiledata.cash}</h3>
+                    <hr/>
+                    <h3>Email: {profiledata.user.email}</h3>
+                    <hr/>
+                    <h3>Last Login: {profiledata.user.last_login}</h3>
+                    <hr/>
+                    <h3>Date Join: {profiledata.joindate}</h3>
                 </section>
             </div>
         </>

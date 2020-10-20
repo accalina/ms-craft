@@ -16,6 +16,7 @@ import Market from './market/Market';
 import Operation from './operation/Operation';
 import Equipment from './equipment/Equipment';
 import Fallenhero from './fallenhero/Fallenhero';
+import Profile from './profile/Profile';
 
 export default function Routes(){
   return (
@@ -30,6 +31,7 @@ export default function Routes(){
           <Route path="/operation" component={Operation}></Route>
           <Route path="/equipment" component={Equipment}></Route>
           <Route path="/fallenhero" component={Fallenhero}></Route>
+          <Route path="/profile" component={Profile}></Route>
           <Route path="/app" component={App}></Route>
         </Switch>
     </Router>

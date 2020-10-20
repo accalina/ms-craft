@@ -29,7 +29,7 @@ export default function Dashboard(props){
             setMemberlist(response.data)
         })
         .catch(function (error) {
-            if(error.response.status == 401){
+            if(error.response.status === 401){
                 Object.keys(Cookie.get()).forEach(function(cookieName) { Cookie.remove(cookieName) });
                 props.history.push({pathname: '/login'})
             }
@@ -69,7 +69,7 @@ export default function Dashboard(props){
             })
         })
         .catch(function (error) {
-            if(error.response.status == 401){
+            if(error.response.status === 401){
                 Object.keys(Cookie.get()).forEach(function(cookieName) { Cookie.remove(cookieName) });
                 props.history.push({pathname: '/login'})
             }

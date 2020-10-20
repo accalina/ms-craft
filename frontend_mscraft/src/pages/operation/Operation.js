@@ -4,6 +4,7 @@ import React, {
     useCallback,
     useEffect
 } from 'react'
+import { Link } from 'react-router-dom'
 import "./Operation.css"
 import Header from '../../components/Header'
 import axios from 'axios'
@@ -32,7 +33,7 @@ export default function Operation(props){
             setMemberlist(response.data)
         })
         .catch(function (error) {
-            if(error.response.status == 401){
+            if(error.response.status === 401){
                 Object.keys(Cookie.get()).forEach(function(cookieName) { Cookie.remove(cookieName) });
                 props.history.push({pathname: '/login'})
             }
@@ -54,7 +55,7 @@ export default function Operation(props){
             setEnemylist(response.data)
         })
         .catch(function (error) {
-            if(error.response.status == 401){
+            if(error.response.status === 401){
                 Object.keys(Cookie.get()).forEach(function(cookieName) { Cookie.remove(cookieName) });
                 props.history.push({pathname: '/login'})
             }
@@ -96,7 +97,7 @@ export default function Operation(props){
             })
         })
         .catch(function (error) {
-            if(error.response.status == 401){
+            if(error.response.status === 401){
                 Object.keys(Cookie.get()).forEach(function(cookieName) { Cookie.remove(cookieName) });
                 props.history.push({pathname: '/login'})
             }
@@ -114,7 +115,7 @@ export default function Operation(props){
     <>
         <Header/>
 
-        {readyfight == true ? (
+        {readyfight === true ? (
         <div className="row">
             <div className="retro col-sm-8 offset-sm-2" >
                 <section class="dashboardBody nes-container with-title pull-left">
@@ -155,7 +156,7 @@ export default function Operation(props){
                                 <tr>
                                     <td colSpan="2">
                                         <center>
-                                            <button className="nes-btn is-primary">Back to dashboard</button>
+                                            <Link className="nes-btn is-primary" to="/Dashboard">Dashboard</Link>
                                         </center>
                                     </td>
                                 </tr>

@@ -29,13 +29,13 @@ export default function Header(props){
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item active">
-                            <Link className="nav-link" to="/Dashboard">Dashboard</Link>
+                            <Link className="nav-link nes-btn is-primary buttonspace" to="/Dashboard">Dashboard</Link>
                         </li>
                         <li className="nav-item active">
-                            <Link className="nav-link" to="/App">Profile</Link>
+                            <Link className="nav-link nes-btn is-success buttonspace" to="/profile">Profile</Link>
                         </li>
                         <li className="nav-item active">
-                            <button type="button" className="nav-link nes-btn is-error" onClick={()=>logout()}>Logout</button>
+                            <button type="button" className="nav-link nes-btn is-error buttonspace" onClick={()=>logout()}>Logout</button>
                         </li>
                     </ul>
                 </div>
