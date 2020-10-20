@@ -19,3 +19,7 @@ ENV PYTHONUNBUFFERED 1
 
 COPY --from=builder /cloudwolf .
 COPY --from=builder /install /usr/local
+
+WORKDIR /cloudwolf/ms-craft/mscraft 
+RUN python manage.py makemigrations
+RUN python manage.py migrate

@@ -45,7 +45,9 @@ INSTALLED_APPS = [
 ]
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'http://mscraft_frontend:3000',
+    'http://mscraft_frontend',
 ]
 
 REST_FRAMEWORK = {
