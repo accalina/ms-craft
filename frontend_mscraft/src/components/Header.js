@@ -22,7 +22,7 @@ export default function Header(props){
     return(
         <div className="col-sm-4 offset-sm-4" >
             <nav className="navbar navbar-expand-lg navbar-light" style={{borderRadius:"10px", backgroundColor: "rgb(255, 255, 255, 0.70)" }}>
-                <b className="navbar-brand" href="#">Navbar</b>
+                <img className="navbar-brand" src="https://vignette.wikia.nocookie.net/metalslug/images/6/6e/Slugflyer.gif/revision/latest?cb=20090109140542"></img>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -38,6 +38,8 @@ export default function Header(props){
                             <button type="button" className="nav-link nes-btn is-error buttonspace" onClick={()=>logout()}>Logout</button>
                         </li>
                     </ul>
+                    
+                <img style={{marginLeft:"35px"}} className="navbar-brand" src="https://vignette.wikia.nocookie.net/metalslug/images/f/ff/Slug_Car.gif/revision/latest?cb=20090415091436"></img>
                 </div>
             </nav>
         </div>

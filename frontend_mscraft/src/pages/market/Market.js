@@ -17,7 +17,7 @@ export default function Dashboard(props){
         axios.defaults.xsrfHeaderName = "X-CSRFToken"
         axios.defaults.xsrfCookieName = 'csrftoken'
 
-        axios.get(`http://mscraft_backend:8000/api/v1/market`, {
+        axios.get(`http://localhost:8000/api/v1/market`, {
             headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + Cookie.get("at")
@@ -52,14 +52,14 @@ export default function Dashboard(props){
 
         const options = {
             method: 'POST',
-            url: 'http://mscraft_backend:8000/api/v1/buymember',
+            url: 'http://localhost:8000/api/v1/buymember',
             headers: requestHeader,
             data: requestData
         };
 
         const getProfile = {
             method: 'GET',
-            url: 'http://mscraft_backend:8000/api/v1/profile',
+            url: 'http://localhost:8000/api/v1/profile',
             headers: requestHeader,
         };
 

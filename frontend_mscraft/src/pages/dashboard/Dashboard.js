@@ -13,7 +13,7 @@ export default function Dashboard(props){
         // setUsername(window.sessionStorage.getItem("username"))
         if (Cookie.get('at')){
             document.getElementsByTagName('body')[0].className = "dashboardBackground"
-            axios.get('http://mscraft_backend:8000/api/v1/profile', {
+            axios.get('http://localhost:8000/api/v1/profile', {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + Cookie.get("at"),
@@ -39,7 +39,7 @@ export default function Dashboard(props){
             <Header/>
             <div className="retro col-sm-6 offset-sm-3" >
                 <section className="dashboardBody nes-container with-title pull-left">
-                    <h3 className="title">Texts</h3>
+                    <h3 className="title">Main Menu:</h3>
                     <h3>{username} (${Cookie.get('cash')})</h3>
                     <hr/>
                     <Link to="/member" className="nes-btn is-primary showcode">Members</Link> <hr/>

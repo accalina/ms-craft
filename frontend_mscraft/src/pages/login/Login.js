@@ -24,7 +24,7 @@ const Login = (props) => {
     // alert(`Username: ${username}, Password: ${password}`)
     // window.sessionStorage.setItem("username", "Claudia")
 
-    axios.post('http://mscraft_backend:8000/api/v1/token', {
+    axios.post('http://localhost:8000/api/v1/token', {
       username: username,
       password: password
     })
@@ -35,7 +35,7 @@ const Login = (props) => {
       axios.defaults.xsrfHeaderName = "X-CSRFToken"
       axios.defaults.xsrfCookieName = 'csrftoken'
 
-      axios.get('http://mscraft_backend:8000/api/v1/profile', {
+      axios.get('http://localhost:8000/api/v1/profile', {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + Cookie.get("at")
